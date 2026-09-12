@@ -58,13 +58,15 @@
   /* ---- phone frame ---- */
   .phone{border-radius:34px;overflow:hidden;border:1px solid var(--line);
          box-shadow:0 28px 70px rgba(0,0,0,.55);display:block;width:100%}
-  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:26px 20px}
+  /* Detail crops at 4:3, not whole phone screens. A full iPhone capture is
+     1:2.2 — a tall slot that reads as a sliver in any grid. */
+  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px 22px}
   .shot a{display:block}
-  .shot img{max-width:210px;margin:0 auto;display:block;
+  .shot img{width:100%;height:auto;display:block;border-radius:14px;
+            border:1px solid var(--line);box-shadow:0 14px 34px rgba(0,0,0,.42);
             transition:transform .18s ease}
   .shot a:hover img{transform:translateY(-3px)}
-  .shot figcaption{color:var(--dimmer);font-size:12px;margin-top:10px;line-height:1.45;
-                   text-align:center;max-width:210px;margin-left:auto;margin-right:auto}
+  .shot figcaption{color:var(--dimmer);font-size:13px;margin-top:12px;line-height:1.5}
   .shot b{color:var(--dim);font-weight:600;display:block;margin-bottom:2px}
 
   /* ---- cards ---- */
@@ -115,9 +117,7 @@
   }
   @media(max-width:430px){
     .wrap{padding:0 18px}
-    .shots{gap:22px 14px}
-    .shot img{max-width:100%}
-    .shot figcaption{max-width:none}
+    .shots{gap:24px}
   }
 </style>
 </head>
@@ -348,28 +348,40 @@
     <p class="lede">Captured from the shipping build.</p>
     <div class="shots">
       <figure class="shot" style="margin:0">
-        <a href="assets/shots/08-failing-test.webp" target="_blank" rel="noopener"><img class="phone" loading="lazy" src="assets/shots/08-failing-test.webp" width="860" height="1870" alt="A failing test showing returned versus expected values"></a>
-        <figcaption><b>Deterministic feedback</b>Returned vs expected, plus the real interpreter error.</figcaption>
+        <a href="assets/crops/08-failing-test.webp" target="_blank" rel="noopener">
+          <img loading="lazy" src="assets/crops/08-failing-test.webp" width="1000" height="750" alt="Deterministic feedback">
+        </a>
+        <figcaption><b>Deterministic feedback</b>Returned vs expected, plus the real interpreter error — from a bare AssertionError.</figcaption>
       </figure>
       <figure class="shot" style="margin:0">
-        <a href="assets/shots/09-solution.webp" target="_blank" rel="noopener"><img class="phone" loading="lazy" src="assets/shots/09-solution.webp" width="860" height="1870" alt="The reference solution for a problem"></a>
-        <figcaption><b>Reference solution</b>Audited to pass every test in MicroPython.</figcaption>
+        <a href="assets/crops/09-solution.webp" target="_blank" rel="noopener">
+          <img loading="lazy" src="assets/crops/09-solution.webp" width="1000" height="750" alt="Two ways forward">
+        </a>
+        <figcaption><b>Two ways forward</b>An audited reference solution, or an AI hint whose fix is run before it is shown.</figcaption>
       </figure>
       <figure class="shot" style="margin:0">
-        <a href="assets/shots/06-codelab.webp" target="_blank" rel="noopener"><img class="phone" loading="lazy" src="assets/shots/06-codelab.webp" width="860" height="1870" alt="The Code Lab problem list"></a>
-        <figcaption><b>Code Lab</b>385 MBPP exercises, searchable and filterable.</figcaption>
+        <a href="assets/crops/06-codelab.webp" target="_blank" rel="noopener">
+          <img loading="lazy" src="assets/crops/06-codelab.webp" width="1000" height="750" alt="385 exercises">
+        </a>
+        <figcaption><b>385 exercises</b>MBPP problems, searchable and filterable by topic and difficulty.</figcaption>
       </figure>
       <figure class="shot" style="margin:0">
-        <a href="assets/shots/03-learn.webp" target="_blank" rel="noopener"><img class="phone" loading="lazy" src="assets/shots/03-learn.webp" width="860" height="1870" alt="The Learn tab listing curriculum tracks"></a>
-        <figcaption><b>Curriculum</b>17 tracks — transformers, RAG, agents, fine-tuning, safety.</figcaption>
+        <a href="assets/crops/03-learn.webp" target="_blank" rel="noopener">
+          <img loading="lazy" src="assets/crops/03-learn.webp" width="1000" height="750" alt="17 tracks">
+        </a>
+        <figcaption><b>17 tracks</b>Transformers, RAG, agents, fine-tuning, distillation, safety.</figcaption>
       </figure>
       <figure class="shot" style="margin:0">
-        <a href="assets/shots/10-beta-notice.webp" target="_blank" rel="noopener"><img class="phone" loading="lazy" src="assets/shots/10-beta-notice.webp" width="860" height="1870" alt="The beta disclaimer shown for the on-device model"></a>
-        <figcaption><b>Honest limits</b>The model's beta status is stated, not buried.</figcaption>
+        <a href="assets/crops/10-beta-notice.webp" target="_blank" rel="noopener">
+          <img loading="lazy" src="assets/crops/10-beta-notice.webp" width="1000" height="750" alt="Honest limits">
+        </a>
+        <figcaption><b>Honest limits</b>The model's beta status is stated plainly, not buried in settings.</figcaption>
       </figure>
       <figure class="shot" style="margin:0">
-        <a href="assets/shots/12-acks.webp" target="_blank" rel="noopener"><img class="phone" loading="lazy" src="assets/shots/12-acks.webp" width="860" height="1870" alt="Open-source acknowledgements screen"></a>
-        <figcaption><b>Licensing</b>Every dependency attributed, with changes stated.</figcaption>
+        <a href="assets/crops/12-acks.webp" target="_blank" rel="noopener">
+          <img loading="lazy" src="assets/crops/12-acks.webp" width="1000" height="750" alt="Licensing">
+        </a>
+        <figcaption><b>Licensing</b>Every dependency attributed, with modifications stated.</figcaption>
       </figure>
     </div>
   </div>
