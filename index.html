@@ -39,7 +39,8 @@
   /* ---- hero ---- */
   .hero{padding:72px 0 84px;border-top:none;
         background:radial-gradient(120% 80% at 25% 10%,#1A1B3D 0%,#0E1026 50%,var(--bg) 100%)}
-  .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:52px;align-items:center}
+  .hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:52px;align-items:center}
+  .hero-phone img{max-width:280px;margin:0 auto;display:block}
   .hero h1{font-size:clamp(40px,6.5vw,62px);font-weight:700;letter-spacing:-1.5px}
   .hero .tag{color:var(--dim);font-size:19px;margin:18px 0 10px;max-width:52ch}
   .stack{color:var(--dimmer);font-size:14px;margin-bottom:30px;max-width:52ch}
@@ -57,9 +58,14 @@
   /* ---- phone frame ---- */
   .phone{border-radius:34px;overflow:hidden;border:1px solid var(--line);
          box-shadow:0 28px 70px rgba(0,0,0,.55);display:block;width:100%}
-  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:22px}
-  .shot figcaption{color:var(--dimmer);font-size:12.5px;margin-top:11px;line-height:1.45}
-  .shot b{color:var(--dim);font-weight:600;display:block}
+  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:26px 20px}
+  .shot a{display:block}
+  .shot img{max-width:210px;margin:0 auto;display:block;
+            transition:transform .18s ease}
+  .shot a:hover img{transform:translateY(-3px)}
+  .shot figcaption{color:var(--dimmer);font-size:12px;margin-top:10px;line-height:1.45;
+                   text-align:center;max-width:210px;margin-left:auto;margin-right:auto}
+  .shot b{color:var(--dim);font-weight:600;display:block;margin-bottom:2px}
 
   /* ---- cards ---- */
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:18px}
@@ -103,9 +109,15 @@
         font-size:14px;margin-top:22px}
 
   @media(max-width:820px){
-    .hero-grid{grid-template-columns:1fr;gap:40px}
-    .hero-phone{max-width:290px;margin:0 auto}
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .hero-phone img{max-width:230px}
     section{padding:60px 0}
+  }
+  @media(max-width:430px){
+    .wrap{padding:0 18px}
+    .shots{gap:22px 14px}
+    .shot img{max-width:100%}
+    .shot figcaption{max-width:none}
   }
 </style>
 </head>
@@ -336,27 +348,27 @@
     <p class="lede">Captured from the shipping build.</p>
     <div class="shots">
       <figure class="shot" style="margin:0">
-        <img class="phone" loading="lazy" src="assets/shots/08-failing-test.webp" width="860" height="1870" alt="A failing test showing returned versus expected values">
+        <a href="assets/shots/08-failing-test.webp" target="_blank" rel="noopener"><img class="phone" loading="lazy" src="assets/shots/08-failing-test.webp" width="860" height="1870" alt="A failing test showing returned versus expected values"></a>
         <figcaption><b>Deterministic feedback</b>Returned vs expected, plus the real interpreter error.</figcaption>
       </figure>
       <figure class="shot" style="margin:0">
-        <img class="phone" loading="lazy" src="assets/shots/09-solution.webp" width="860" height="1870" alt="The reference solution for a problem">
+        <a href="assets/shots/09-solution.webp" target="_blank" rel="noopener"><img class="phone" loading="lazy" src="assets/shots/09-solution.webp" width="860" height="1870" alt="The reference solution for a problem"></a>
         <figcaption><b>Reference solution</b>Audited to pass every test in MicroPython.</figcaption>
       </figure>
       <figure class="shot" style="margin:0">
-        <img class="phone" loading="lazy" src="assets/shots/06-codelab.webp" width="860" height="1870" alt="The Code Lab problem list">
+        <a href="assets/shots/06-codelab.webp" target="_blank" rel="noopener"><img class="phone" loading="lazy" src="assets/shots/06-codelab.webp" width="860" height="1870" alt="The Code Lab problem list"></a>
         <figcaption><b>Code Lab</b>385 MBPP exercises, searchable and filterable.</figcaption>
       </figure>
       <figure class="shot" style="margin:0">
-        <img class="phone" loading="lazy" src="assets/shots/03-learn.webp" width="860" height="1870" alt="The Learn tab listing curriculum tracks">
+        <a href="assets/shots/03-learn.webp" target="_blank" rel="noopener"><img class="phone" loading="lazy" src="assets/shots/03-learn.webp" width="860" height="1870" alt="The Learn tab listing curriculum tracks"></a>
         <figcaption><b>Curriculum</b>17 tracks — transformers, RAG, agents, fine-tuning, safety.</figcaption>
       </figure>
       <figure class="shot" style="margin:0">
-        <img class="phone" loading="lazy" src="assets/shots/10-beta-notice.webp" width="860" height="1870" alt="The beta disclaimer shown for the on-device model">
+        <a href="assets/shots/10-beta-notice.webp" target="_blank" rel="noopener"><img class="phone" loading="lazy" src="assets/shots/10-beta-notice.webp" width="860" height="1870" alt="The beta disclaimer shown for the on-device model"></a>
         <figcaption><b>Honest limits</b>The model's beta status is stated, not buried.</figcaption>
       </figure>
       <figure class="shot" style="margin:0">
-        <img class="phone" loading="lazy" src="assets/shots/12-acks.webp" width="860" height="1870" alt="Open-source acknowledgements screen">
+        <a href="assets/shots/12-acks.webp" target="_blank" rel="noopener"><img class="phone" loading="lazy" src="assets/shots/12-acks.webp" width="860" height="1870" alt="Open-source acknowledgements screen"></a>
         <figcaption><b>Licensing</b>Every dependency attributed, with changes stated.</figcaption>
       </figure>
     </div>
