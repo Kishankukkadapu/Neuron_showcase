@@ -43,7 +43,9 @@
   .hero-shot{width:100%;height:auto;display:block;margin-top:48px;border-radius:18px;
              border:1px solid var(--line);box-shadow:0 30px 70px rgba(0,0,0,.5)}
   .hero h1{font-size:clamp(40px,6.5vw,62px);font-weight:700;letter-spacing:-1.5px}
-  .hero .tag{color:var(--dim);font-size:19px;margin:18px 0 10px;max-width:52ch}
+  .subject{color:var(--violet);font-size:15px;font-weight:500;margin:14px 0 0;
+           max-width:54ch;letter-spacing:.2px}
+  .hero .tag{color:var(--dim);font-size:19px;margin:14px 0 10px;max-width:52ch}
   .stack{color:var(--dimmer);font-size:14px;margin-bottom:30px;max-width:52ch}
   .stack b{color:var(--dim);font-weight:500}
   .btns{display:flex;flex-wrap:wrap;gap:11px}
@@ -91,11 +93,21 @@
   td code,p code,li code{font-family:var(--mono);font-size:.9em;color:var(--sky);
        background:rgba(97,199,250,.10);padding:2px 6px;border-radius:6px}
 
-  .video{position:relative;padding-top:56.25%;border-radius:20px;overflow:hidden;
-         border:1px solid var(--line);background:var(--bg-2)}
-  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-  .video-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;
-        align-items:center;justify-content:center;gap:10px;color:var(--dimmer);text-align:center;padding:24px}
+  /* The recording is a phone screen, so it is portrait. Pairing it with a
+     timeline uses the horizontal space instead of leaving a lone tall
+     rectangle on the page. */
+  .demo{display:grid;grid-template-columns:300px 1fr;gap:44px;align-items:start}
+  .demo video{width:100%;height:auto;display:block;border-radius:20px;
+              border:1px solid var(--line);box-shadow:0 26px 60px rgba(0,0,0,.5);background:#000}
+  .beats{list-style:none;padding:0;margin:0}
+  .beats li{display:grid;grid-template-columns:58px 1fr;gap:16px;padding:14px 0;
+            border-bottom:1px solid var(--line)}
+  .beats li:last-child{border-bottom:none}
+  .beats .t{font-family:var(--mono);font-size:12.5px;color:var(--sky);padding-top:2px}
+  .beats b{display:block;color:var(--ink);font-size:15px;font-weight:600;margin-bottom:2px}
+  .beats span{color:var(--dim);font-size:14px}
+  @media(max-width:760px){.demo{grid-template-columns:1fr;gap:30px}
+                          .demo video{max-width:290px;margin:0 auto}}
 
   ul.plain{list-style:none;padding:0;margin:0}
   ul.plain li{padding:15px 0;border-bottom:1px solid var(--line);color:var(--dim);font-size:15px}
@@ -133,6 +145,8 @@
         <span class="badge" style="color:var(--amber);border-color:rgba(252,168,71,.35)">Solo project</span>
       </div>
       <h1>Neuron</h1>
+      <p class="subject">Personal project on LoRA, knowledge distillation and
+         on-edge inference with open-source LLMs</p>
       <p class="tag">Learn the modern AI stack and practise Python entirely on your iPhone —
          no account, no server, no network.</p>
       <p class="stack">Built with <b>SwiftUI</b>, <b>WebAssembly</b>, <b>MicroPython</b>,
@@ -154,16 +168,28 @@
   <div class="wrap">
     <div class="eyebrow">60-second demo</div>
     <h2>See it run</h2>
-    <p class="lede">Real Python executing on the phone, a failing test explained, and an
-       AI-suggested fix verified against the test suite before it is shown.</p>
-    <div class="video">
-      <!-- Replace this block with the YouTube embed once the video is up:
-           <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Neuron demo"
-                   allowfullscreen loading="lazy"></iframe>                      -->
-      <div class="video-placeholder">
-        <strong style="color:var(--dim)">Demo video goes here</strong>
-        <span>Record on a physical iPhone — the on-device model cannot run in the Simulator.</span>
-      </div>
+    <p class="lede">Forty-one seconds, recorded on a physical iPhone: real Python executing
+       on the device, a failing test explained, and an AI-suggested fix verified against the
+       test suite before it is shown.</p>
+    <div class="demo">
+      <video controls playsinline preload="none" poster="assets/demo-poster.webp"
+             width="444" height="960">
+        <source src="assets/demo.mp4" type="video/mp4">
+        Your browser cannot play this video.
+        <a href="assets/demo.mp4">Download it instead</a>.
+      </video>
+      <ul class="beats">
+        <li><span class="t">0:00</span><div><b>A real device</b>
+          <span>Recorded on an iPhone, not a simulator — the on-device model cannot run in one.</span></div></li>
+        <li><span class="t">0:05</span><div><b>The curriculum</b>
+          <span>17 tracks, 188 lessons, 1,209 questions, all stored locally.</span></div></li>
+        <li><span class="t">0:15</span><div><b>Code that actually runs</b>
+          <span>A submission is executed by MicroPython compiled to WebAssembly, inside a sandboxed process.</span></div></li>
+        <li><span class="t">0:25</span><div><b>A failure, explained</b>
+          <span>The failed assert is dissected into what the function returned and what was expected.</span></div></li>
+        <li><span class="t">0:33</span><div><b>A verified repair</b>
+          <span>The 0.5B model drafts a fix; the app runs it against the same tests and shows it only once it passes.</span></div></li>
+      </ul>
     </div>
   </div>
 </section>
