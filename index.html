@@ -42,9 +42,11 @@
   .hero-text{max-width:730px}
   .hero-shot{width:100%;height:auto;display:block;margin-top:48px;border-radius:18px;
              border:1px solid var(--line);box-shadow:0 30px 70px rgba(0,0,0,.5)}
-  .hero h1{font-size:clamp(40px,6.5vw,62px);font-weight:700;letter-spacing:-1.5px}
-  .subject{color:var(--violet);font-size:15px;font-weight:500;margin:14px 0 0;
-           max-width:54ch;letter-spacing:.2px}
+  .hero h1{font-size:clamp(40px,6.5vw,62px);font-weight:700;letter-spacing:-1.5px;
+           line-height:1.15;max-width:22ch}
+  .subject{color:var(--ink);font-size:17px;font-weight:400;letter-spacing:0;
+           white-space:normal}
+  @media(max-width:760px){.subject{display:block;margin-top:10px;font-size:15px}}
   .hero .tag{color:var(--dim);font-size:19px;margin:14px 0 10px;max-width:52ch}
   .stack{color:var(--dimmer);font-size:14px;margin-bottom:30px;max-width:52ch}
   .stack b{color:var(--dim);font-weight:500}
@@ -144,9 +146,8 @@
         <span class="badge" style="color:var(--sky);border-color:rgba(97,199,250,.35)">No backend</span>
         <span class="badge" style="color:var(--amber);border-color:rgba(252,168,71,.35)">Solo project</span>
       </div>
-      <h1>Neuron</h1>
-      <p class="subject">Personal project on LoRA, knowledge distillation and
-         on-edge inference with open-source LLMs</p>
+      <h1>Neuron <span class="subject">(Personal project on LoRA, knowledge
+          distillation and on-edge inference with open-source LLMs)</span></h1>
       <p class="tag">Learn the modern AI stack and practise Python entirely on your iPhone —
          no account, no server, no network.</p>
       <p class="stack">Built with <b>SwiftUI</b>, <b>WebAssembly</b>, <b>MicroPython</b>,
