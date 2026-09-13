@@ -305,8 +305,13 @@
       <tr><th>Stage</th><th>Detail</th></tr>
       <tr><td>Teacher</td><td>Qwen2.5-Coder-32B-Instruct (Apache-2.0)</td></tr>
       <tr><td>Student</td><td>Qwen2.5-Coder-0.5B-Instruct (Apache-2.0)</td></tr>
-      <tr><td>Method</td><td>Black-box knowledge distillation — supervised fine-tuning on
-          teacher-generated critiques, via a LoRA adapter, then merged</td></tr>
+      <tr><td>Method</td><td>Sequence-level distillation with <b>top-5 teacher logprobs</b>
+          retained at each position — a hybrid objective combining cross-entropy on the
+          teacher's token with KL divergence against its truncated distribution, trained
+          through a LoRA adapter, then merged</td></tr>
+      <tr><td>Why top-5</td><td>Qwen's vocabulary is ~150k tokens, so storing full logits for
+          every position is prohibitive. Keeping the top-5 head preserves most of the
+          distributional signal at a fraction of the size</td></tr>
       <tr><td>Training data</td><td>1,608 candidate solutions across 420 MBPP problems, each
           paired with the interpreter's real verdict</td></tr>
       <tr><td>Label quality</td><td>0 verdict/execution mismatches in 282 sampled examples</td></tr>
@@ -315,6 +320,9 @@
 
     <h3 style="margin:40px 0 10px;font-size:19px">What it can and cannot do</h3>
     <p style="color:var(--dim);font-size:15px;max-width:66ch">
+      Distilling against the teacher's <em>distribution</em> rather than only its sampled text
+      is what makes a 0.5B student worth training at all — the top-5 head carries which
+      alternatives the teacher considered, not just which one it happened to emit.
       A single sample repairs a broken solution about <b>37%</b> of the time, measured over 517
       held-out MBPP candidates built as one-token mutations of correct code. Real learner code is
       much further from correct, and the rate on it is considerably lower. The number that moved
